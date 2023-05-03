@@ -10,7 +10,7 @@ export class PaginationPipe implements PipeTransform {
       return value;
     }
     const location = (args.perPage * (args.currentPage - 1)) || 0 ;
-    return value.slice(location, location + args.perPage);
+    return value?.slice(location, location + args.perPage);
 
   }
 

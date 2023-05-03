@@ -2,7 +2,7 @@
   <table class="table table-striped table-bordered">
       <thead>
           <tr>
-              <th>Blend Name</th>
+              <th>Coffee Blend Name</th>
               <th>Id</th>
               <th>Origin</th>
           </tr>
@@ -23,7 +23,7 @@
     (next)="next()"
     [currentPage]="currentPage"
     [pagesToShow]="pagesToShow"
-    [totalItemsCount]="products.length"
+    [totalItemsCount]="products?.length"
     [perPage]="perPage"
   ></app-pagination>
 </div>

@@ -11,18 +11,11 @@ import { selectCoffeeStatus } from 'src/store/selectors/app.selector';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(private store: Store<{ items: Product[]; cart: [] }>) {
-    store.pipe(select(selectCoffeeStatus))
-    .subscribe(
-      data => (
-        this.items = data
-      ));
-  }
+  constructor(private store: Store<{ productList: Product[]}>) {}
 
   items: Product[] = [];
 
   ngOnInit() {
     this.store.dispatch(loadCoffeeItems());
-    
   }
 }

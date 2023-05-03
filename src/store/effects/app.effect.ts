@@ -4,6 +4,7 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 import { ProductService } from 'src/app/product.service';
 import { didCoffeeItemsLoaded, loadCoffeeItems } from '../actions/app.action';
 import { Product } from '../app.interface';
+import { of } from 'rxjs';
 
 
 @Injectable()
@@ -20,6 +21,12 @@ export class CoffeeEffects {
                 statusResponse: products,
                 apiSuccess: true,
             })
+          }),
+          catchError(error=>{
+            return of(didCoffeeItemsLoaded({
+                statusResponse: undefined,
+                apiSuccess:false
+            }))
           })
         )
       })

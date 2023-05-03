@@ -13,13 +13,12 @@ export class ProductDetailsComponent implements OnInit {
 
   product: Product = {};
   id = '';
-  constructor(private route: ActivatedRoute, private store: Store<{ items: Product[]; cart: [] }>) { }
+  constructor(private route: ActivatedRoute, private store: Store<{ productList: Product[]}>) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.store.select(selectCoffeeStatus)
       .subscribe((data) => {
-        console.log(data);
         for (let i = 0; i < data.length; i++) {
           if (data[i].id === +this.id) {
             this.product = data[i];
