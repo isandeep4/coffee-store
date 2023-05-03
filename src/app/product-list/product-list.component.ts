@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from '../product.service';
 import { Product } from 'src/store/app.interface';
@@ -11,7 +11,7 @@ import { selectCoffeeStatus } from 'src/store/selectors/app.selector';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  constructor(private router:Router,
+  constructor(private router:Router, private cdr: ChangeDetectorRef,
     private productService:ProductService, private store: Store<{ productList: Product[]}>) {}
 
   products: Product[];
@@ -25,6 +25,7 @@ export class ProductListComponent implements OnInit {
       data => (
         this.products = data
       ));
+    this.cdr.detectChanges();
   }
   next() {
     this.currentPage++;
