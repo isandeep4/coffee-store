@@ -1,0 +1,26 @@
+<nav aria-label="...">
+  <ul class="pagination">
+    <li
+      (click)="onPrev()"
+      class="page-item disabled">
+      <button
+        [disabled]="currentPage < 2"
+        class="page-link" tabindex="-1">Previous</button>
+    </li>
+    <li
+      *ngFor="let page of getPages()"
+      [style.background-color]="page === currentPage ? '#212529' : '#dee2e6'"
+      (click)="onPage(page)"
+      class="page-item">
+      <button class="page-link">
+        {{page}}
+      </button>
+    </li>
+    <li
+      (click)="onNext()"
+      class="page-item">
+      <button [disabled]="isOnLastPage()" class="page-link">Next</button>
+    </li>
+  </ul>
+
+</nav>

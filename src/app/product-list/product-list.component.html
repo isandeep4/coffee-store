@@ -1,0 +1,29 @@
+<div class="container">
+  <table class="table table-striped table-bordered">
+      <thead>
+          <tr>
+              <th>Blend Name</th>
+              <th>Id</th>
+              <th>Origin</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let product of products | pagination: {perPage: perPage, currentPage: currentPage}">
+              <td><a [routerLink]="['/products', product.id]">{{product.blend_name}}</a></td>
+              <td>{{product.id}}</td>
+              <td>{{product.origin}}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+<div>
+  <app-pagination
+    (prev)="prev()"
+    (goPage)="goToPage($event)"
+    (next)="next()"
+    [currentPage]="currentPage"
+    [pagesToShow]="pagesToShow"
+    [totalItemsCount]="products.length"
+    [perPage]="perPage"
+  ></app-pagination>
+</div>
