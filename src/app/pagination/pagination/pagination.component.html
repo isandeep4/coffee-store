@@ -9,10 +9,9 @@
     </li>
     <li
       *ngFor="let page of getPages()"
-      [style.background-color]="page === currentPage ? '#212529' : '#dee2e6'"
       (click)="onPage(page)"
       class="page-item">
-      <button class="page-link">
+      <button class="page-link" [ngClass]="{'active-page' : page === currentPage}">
         {{page}}
       </button>
     </li>
